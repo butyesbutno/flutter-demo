@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterdemo/camera.dart';
+import 'package:flutterdemo/size.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({this.title});
@@ -30,18 +32,46 @@ class HomePage extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               width:double.infinity,
-              child: Text("占1/6", style: TextStyle(color: Colors.white)),
+              child: RaisedButton(
+                onPressed: (){
+                  Navigator.push(context, PageRouteBuilder(
+                    opaque: false,
+                    pageBuilder: (BuildContext context_new, _, __) {
+                      return new TakePictureScreen(
+                      );
+                    }
+                  ));
+                },
+                child: Text(
+                  "占1/6,拍照",
+                  style: TextStyle(fontSize: getfont(18), color: Colors.white)),
+                textColor: Color(0xffffffff),
+                color: Color(0xff5E8AFF),
+                highlightColor: Color(0xff00ff00),
+                shape: const RoundedRectangleBorder(
+                  side: BorderSide.none,
+                  borderRadius: BorderRadius.all(Radius.circular(50))),
+              ),
               color: Color.fromARGB(255, 255, 0, 0)
             ),
             flex: 1,
           ),
           Expanded(
-            child: Container(
-              alignment: Alignment.center,
-              width:double.infinity,
-              child: Text("占1/3", style: TextStyle(color: Colors.white)),
-              color: Color.fromARGB(255, 0, 255, 0)
-            ),
+            child: GestureDetector(
+              child:Container(
+                alignment: Alignment.center,
+                width:double.infinity,
+                child: Text("占1/3，手势返回", style: TextStyle(color: Colors.white)),
+                color: Color.fromARGB(255, 0, 255, 0)
+              ),
+              onHorizontalDragEnd: (DragEndDetails endDetails) {
+                double velocity = endDetails.primaryVelocity;
+                if (velocity < 0) {
+                  print('left');
+                } else {
+                  Navigator.pop(context);
+                }
+              },),
             flex: 2,
           ),
           Expanded(

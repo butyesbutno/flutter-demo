@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter1/size.dart';
-
+import 'package:flutterdemo/size.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({this.title});
@@ -87,8 +86,8 @@ class LoginPage extends StatelessWidget {
               color: Color(0xff5E8AFF),
               highlightColor: Color(0xff00ff00),
               shape: const RoundedRectangleBorder(
-          side: BorderSide.none,
-          borderRadius: BorderRadius.all(Radius.circular(50))),
+                side: BorderSide.none,
+                borderRadius: BorderRadius.all(Radius.circular(50))),
             ),
           ),
         ],
